@@ -1,0 +1,27 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:tns="http://servicio.credito.com.co/objetos" targetNamespace="http://servicio.credito.com.co/objetos"
+	elementFormDefault="qualified">
+
+	<xs:include schemaLocation="Identificacion.xsd" />
+	<xs:include schemaLocation="Direccion.xsd" />
+	<xs:include schemaLocation="Tarjeta.xsd" />
+
+	<xs:complexType name="Cliente">
+		<xs:sequence>
+			<xs:element name="id" type="xs:string" />
+			<xs:element name="nombres" type="xs:string" />
+			<xs:element name="apellidos" type="xs:string" />
+			<xs:element name="identificacion" type="tns:Identificacion" />
+			<xs:element name="telefono" type="xs:string" />
+			<xs:element name="email" type="xs:string" />
+			<xs:element name="direcciones" type="tns:Direccion" maxOccurs="unbounded" />
+			<xs:element name="informacionFinanciera" type="tns:InformacionFinanciera" />
+			<xs:element name="estado" type="xs:string" />
+			<xs:element name="canalActualizacion" type="xs:string" />
+			<xs:element name="usuarioActualizacion" type="xs:string" />
+			<xs:element name="fechaActualizacion" type="xs:string" />
+			<xs:element name="ipActualizacion" type="xs:string" />
+		</xs:sequence>
+	</xs:complexType>
+
+</xs:schema>

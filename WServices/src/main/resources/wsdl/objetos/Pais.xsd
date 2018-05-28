@@ -1,0 +1,16 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:tns="http://servicio.credito.com.co/objetos"
+	targetNamespace="http://servicio.credito.com.co/objetos"
+	elementFormDefault="qualified">
+
+	<xs:include schemaLocation="Estado.xsd" />
+
+	<xs:complexType name="Pais">
+		<xs:sequence>
+			<xs:element name="id" type="xs:string" />
+			<xs:element name="nombre" type="xs:string" />
+			<xs:element name="estado" type="tns:Estado" />
+		</xs:sequence>
+	</xs:complexType>
+
+</xs:schema>

@@ -1,0 +1,15 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:tns="http://servicio.credito.com.co/objetos"
+	targetNamespace="http://servicio.credito.com.co/objetos"
+	elementFormDefault="qualified">
+
+	<xs:complexType name="InformacionFinanciera">
+		<xs:sequence>
+			<xs:element name="ingresos" type="xs:double" />
+			<xs:element name="otrosIngresos" type="xs:double" />
+			<xs:element name="egresos" type="xs:double" />
+			<xs:element name="otrosEgresos" type="xs:double" />		
+		</xs:sequence>
+	</xs:complexType>
+
+</xs:schema>

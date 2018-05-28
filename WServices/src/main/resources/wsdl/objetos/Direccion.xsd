@@ -1,0 +1,21 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:tns="http://servicio.credito.com.co/objetos"
+	targetNamespace="http://servicio.credito.com.co/objetos"
+	elementFormDefault="qualified">
+
+	<xs:include schemaLocation="Ciudad.xsd" />
+
+	<xs:complexType name="Direccion">
+		<xs:sequence>
+			<xs:element name="direccion" type="xs:string" />
+			<xs:element name="estado" type="xs:string" />
+			<xs:element name="ciudad" type="tns:Ciudad" />
+			<xs:element name="tipo" type="xs:string" />
+			<xs:element name="canalActualizacion" type="xs:string" />
+			<xs:element name="usuarioActualizacion" type="xs:string" />
+			<xs:element name="fechaActualizacion" type="xs:string" />
+			<xs:element name="ipActualizacion" type="xs:string" />			
+		</xs:sequence>
+	</xs:complexType>
+
+</xs:schema>
