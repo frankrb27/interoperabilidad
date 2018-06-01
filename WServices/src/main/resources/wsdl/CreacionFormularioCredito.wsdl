@@ -1,0 +1,71 @@
+<wsdl:definitions
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:sch="http://servicio.credito.com.co/creacion/formulario"
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+	xmlns:tns="http://servicio.credito.com.co/creacion/formulario"
+	targetNamespace="http://servicio.credito.com.co/creacion/formulario">
+	<wsdl:types>
+		<xs:schema
+			xmlns:cli="http://servicio.credito.com.co/objetos"
+			xmlns:xs="http://www.w3.org/2001/XMLSchema"
+			elementFormDefault="qualified"
+			targetNamespace="http://servicio.credito.com.co/creacion/formulario">
+			<xs:import
+				namespace="http://servicio.credito.com.co/objetos"
+				schemaLocation="objetos/Cliente.xsd" />
+			<xs:element name="creacionFormularioCreditoRequest">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="cliente" type="cli:Cliente" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="creacionFormularioCreditoResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="codigo" type="xs:string" />
+						<xs:element name="mensaje" type="xs:string" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:schema>
+	</wsdl:types>
+	<wsdl:message name="creacionFormularioCreditoRequest">
+		<wsdl:part element="tns:creacionFormularioCreditoRequest"
+			name="creacionFormularioCreditoRequest"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="creacionFormularioCreditoResponse">
+		<wsdl:part element="tns:creacionFormularioCreditoResponse"
+			name="creacionFormularioCreditoResponse"></wsdl:part>
+	</wsdl:message>
+	<wsdl:portType name="ServicePortCrearFormulario">
+		<wsdl:operation name="creacionFormularioCredito">
+			<wsdl:input message="tns:creacionFormularioCreditoRequest"
+				name="creacionFormularioCreditoRequest"></wsdl:input>
+			<wsdl:output
+				message="tns:creacionFormularioCreditoResponse"
+				name="creacionFormularioCreditoResponse"></wsdl:output>
+		</wsdl:operation>
+	</wsdl:portType>
+	<wsdl:binding name="ServicePortCrearFormularioSoap11"
+		type="tns:ServicePortCrearFormulario">
+		<soap:binding style="document"
+			transport="http://schemas.xmlsoap.org/soap/http" />
+		<wsdl:operation name="creacionFormularioCredito">
+			<soap:operation soapAction="" />
+			<wsdl:input name="creacionFormularioCreditoRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="creacionFormularioCreditoResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:service name="ServicePortCrearFormularioService">
+		<wsdl:port binding="tns:ServicePortCrearFormularioSoap11"
+			name="ServicePortCrearFormularioSoap11">
+			<soap:address
+				location="http://localhost:8090/ws/credito/creacion/formulario" />
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>

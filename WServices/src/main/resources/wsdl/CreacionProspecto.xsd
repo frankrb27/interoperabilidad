@@ -1,7 +1,7 @@
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
-	xmlns:tns="http://servicio.ordenes.com.co/consulta"
+	xmlns:tns="http://servicio.credito.com.co/creacion/prospecto"
 	xmlns:cli="http://servicio.credito.com.co/objetos"
-	targetNamespace="http://servicio.ordenes.com.co/consulta"
+	targetNamespace="http://servicio.credito.com.co/creacion/prospecto"
 	elementFormDefault="qualified">
 
 	<xs:import

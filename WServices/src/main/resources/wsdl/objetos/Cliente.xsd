@@ -4,7 +4,7 @@
 
 	<xs:include schemaLocation="Identificacion.xsd" />
 	<xs:include schemaLocation="Direccion.xsd" />
-	<xs:include schemaLocation="Tarjeta.xsd" />
+	<xs:include schemaLocation="InformacionFinanciera.xsd" />
 
 	<xs:complexType name="Cliente">
 		<xs:sequence>
