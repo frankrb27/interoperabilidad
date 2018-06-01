@@ -1,5 +1,8 @@
 package co.com.ordenes.servicio.servicios;
 
+import java.util.List;
+import java.util.Properties;
+
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
@@ -8,6 +11,7 @@ import org.springframework.core.io.ClassPathResource;
 import org.springframework.ws.config.annotation.EnableWs;
 import org.springframework.ws.config.annotation.WsConfigurerAdapter;
 import org.springframework.ws.soap.security.wss4j.Wss4jSecurityInterceptor;
+import org.springframework.ws.soap.security.wss4j.callback.SimplePasswordValidationCallbackHandler;
 import org.springframework.ws.transport.http.MessageDispatcherServlet;
 import org.springframework.ws.wsdl.wsdl11.DefaultWsdl11Definition;
 import org.springframework.xml.xsd.SimpleXsdSchema;
@@ -45,15 +49,26 @@ public class WebServiceConfig extends WsConfigurerAdapter {
 	}
 
 	@Bean
-	public Wss4jSecurityInterceptor securityInterceptor() {
-		Wss4jSecurityInterceptor securityInterceptor = new   Wss4jSecurityInterceptor();
-		securityInterceptor.setSecurementActions("UsernameToken");
-		securityInterceptor.setSecurementUsername("aes-inter");
-		securityInterceptor.setSecurementPassword("aes-inter");
-		securityInterceptor.setSecurementPasswordType("PasswordDigest");
-		securityInterceptor.setSecurementUsernameTokenElements("Created");
-		return securityInterceptor;
-	}
+    public SimplePasswordValidationCallbackHandler securityCallbackHandler(){
+        SimplePasswordValidationCallbackHandler callbackHandler = new SimplePasswordValidationCallbackHandler();
+        Properties users = new Properties();
+        users.setProperty("admin", "secret");
+        callbackHandler.setUsers(users);
+        return callbackHandler;
+    }
+
+    @Bean
+    public Wss4jSecurityInterceptor securityInterceptor(){
+        Wss4jSecurityInterceptor securityInterceptor = new Wss4jSecurityInterceptor();
+        securityInterceptor.setValidationActions("Timestamp UsernameToken");
+        securityInterceptor.setValidationCallbackHandler(securityCallbackHandler());
+        return securityInterceptor;
+    }
+
+    @Override
+    public void addInterceptors(List interceptors) {
+        interceptors.add(securityInterceptor());
+    }
 
 	@Bean
 	public XsdSchema creacionFormularioCreditoSchema() {

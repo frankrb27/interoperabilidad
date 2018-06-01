@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="72840fd6-b8f5-4cdd-9451-20a9054870b0" activeEnvironment="Default" name="creacion-formulario" resourceRoot="" soapui-version="5.4.0" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="a6b27880-2d85-4041-9b48-46bfb7e725ac" wsaVersion="NONE" name="ServicePortCrearFormularioSoap11" type="wsdl" bindingName="{http://servicio.credito.com.co/creacion/formulario}ServicePortCrearFormularioSoap11" soapVersion="1_1" anonymous="optional" definition="file:/F:/Frank/Javeriana/II/Interoperabilidad/interoperabilidad/WServices/src/main/resources/wsdl/CreacionFormularioCredito.wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="file:/F:/Frank/Javeriana/II/Interoperabilidad/interoperabilidad/WServices/src/main/resources/wsdl/CreacionFormularioCredito.wsdl"><con:part><con:url>file:/F:/Frank/Javeriana/II/Interoperabilidad/interoperabilidad/WServices/src/main/resources/wsdl/CreacionFormularioCredito.wsdl</con:url><con:content><![CDATA[<wsdl:definitions targetNamespace="http://servicio.credito.com.co/creacion/formulario" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:sch="http://servicio.credito.com.co/creacion/formulario" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://servicio.credito.com.co/creacion/formulario">
+  <wsdl:types>
+    <xs:schema elementFormDefault="qualified" targetNamespace="http://servicio.credito.com.co/creacion/formulario" xmlns:cli="http://servicio.credito.com.co/objetos" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="http://servicio.credito.com.co/objetos" schemaLocation="objetos/Cliente.xsd"/>
+      <xs:element name="creacionFormularioCreditoRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="cliente" type="cli:Cliente"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="creacionFormularioCreditoResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="codigo" type="xs:string"/>
+            <xs:element name="mensaje" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="creacionFormularioCreditoRequest">
+    <wsdl:part element="tns:creacionFormularioCreditoRequest" name="creacionFormularioCreditoRequest"/>
+  </wsdl:message>
+  <wsdl:message name="creacionFormularioCreditoResponse">
+    <wsdl:part element="tns:creacionFormularioCreditoResponse" name="creacionFormularioCreditoResponse"/>
+  </wsdl:message>
+  <wsdl:portType name="ServicePortCrearFormulario">
+    <wsdl:operation name="creacionFormularioCredito">
+      <wsdl:input message="tns:creacionFormularioCreditoRequest" name="creacionFormularioCreditoRequest"/>
+      <wsdl:output message="tns:creacionFormularioCreditoResponse" name="creacionFormularioCreditoResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ServicePortCrearFormularioSoap11" type="tns:ServicePortCrearFormulario">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="creacionFormularioCredito">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="creacionFormularioCreditoRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="creacionFormularioCreditoResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ServicePortCrearFormularioService">
+    <wsdl:port binding="tns:ServicePortCrearFormularioSoap11" name="ServicePortCrearFormularioSoap11">
+      <soap:address location="http://localhost:8090/ws/credito/creacion/formulario"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part><con:part><con:url>file:\F:\Frank\Javeriana\II\Interoperabilidad\interoperabilidad\WServices\src\main\resources\wsdl\objetos\Cliente.xsd</con:url><con:content><![CDATA[<xs:schema targetNamespace="http://servicio.credito.com.co/objetos" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://servicio.credito.com.co/objetos">
+  <xs:include schemaLocation="Identificacion.xsd"/>
+  <xs:include schemaLocation="Direccion.xsd"/>
+  <xs:include schemaLocation="InformacionFinanciera.xsd"/>
+  <xs:complexType name="Cliente">
+    <xs:sequence>
+      <xs:element name="id" type="xs:string"/>
+      <xs:element name="nombres" type="xs:string"/>
+      <xs:element name="apellidos" type="xs:string"/>
+      <xs:element name="identificacion" type="tns:Identificacion"/>
+      <xs:element name="telefono" type="xs:string"/>
+      <xs:element name="email" type="xs:string"/>
+      <xs:element name="direcciones" type="tns:Direccion" maxOccurs="unbounded"/>
+      <xs:element name="informacionFinanciera" type="tns:InformacionFinanciera"/>
+      <xs:element name="estado" type="xs:string"/>
+      <xs:element name="canalActualizacion" type="xs:string"/>
+      <xs:element name="usuarioActualizacion" type="xs:string"/>
+      <xs:element name="fechaActualizacion" type="xs:string"/>
+      <xs:element name="ipActualizacion" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part><con:part><con:url>file:\F:\Frank\Javeriana\II\Interoperabilidad\interoperabilidad\WServices\src\main\resources\wsdl\objetos\Identificacion.xsd</con:url><con:content><![CDATA[<xs:schema targetNamespace="http://servicio.credito.com.co/objetos" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://servicio.credito.com.co/objetos">
+  <xs:complexType name="Identificacion">
+    <xs:sequence>
+      <xs:element name="tipo" type="xs:string"/>
+      <xs:element name="numero" type="xs:string"/>
+      <xs:element name="fechaExpedicion" type="xs:date"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part><con:part><con:url>file:\F:\Frank\Javeriana\II\Interoperabilidad\interoperabilidad\WServices\src\main\resources\wsdl\objetos\Direccion.xsd</con:url><con:content><![CDATA[<xs:schema targetNamespace="http://servicio.credito.com.co/objetos" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://servicio.credito.com.co/objetos">
+  <xs:include schemaLocation="Ciudad.xsd"/>
+  <xs:complexType name="Direccion">
+    <xs:sequence>
+      <xs:element name="direccion" type="xs:string"/>
+      <xs:element name="estado" type="xs:string"/>
+      <xs:element name="ciudad" type="tns:Ciudad"/>
+      <xs:element name="tipo" type="xs:string"/>
+      <xs:element name="canalActualizacion" type="xs:string"/>
+      <xs:element name="usuarioActualizacion" type="xs:string"/>
+      <xs:element name="fechaActualizacion" type="xs:string"/>
+      <xs:element name="ipActualizacion" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part><con:part><con:url>file:\F:\Frank\Javeriana\II\Interoperabilidad\interoperabilidad\WServices\src\main\resources\wsdl\objetos\Ciudad.xsd</con:url><con:content><![CDATA[<xs:schema targetNamespace="http://servicio.credito.com.co/objetos" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://servicio.credito.com.co/objetos">
+  <xs:include schemaLocation="Pais.xsd"/>
+  <xs:complexType name="Ciudad">
+    <xs:sequence>
+      <xs:element name="id" type="xs:string"/>
+      <xs:element name="nombre" type="xs:string"/>
+      <xs:element name="pais" type="tns:Pais"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part><con:part><con:url>file:\F:\Frank\Javeriana\II\Interoperabilidad\interoperabilidad\WServices\src\main\resources\wsdl\objetos\Pais.xsd</con:url><con:content><![CDATA[<xs:schema targetNamespace="http://servicio.credito.com.co/objetos" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://servicio.credito.com.co/objetos">
+  <xs:include schemaLocation="Estado.xsd"/>
+  <xs:complexType name="Pais">
+    <xs:sequence>
+      <xs:element name="id" type="xs:string"/>
+      <xs:element name="nombre" type="xs:string"/>
+      <xs:element name="estado" type="tns:Estado"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part><con:part><con:url>file:\F:\Frank\Javeriana\II\Interoperabilidad\interoperabilidad\WServices\src\main\resources\wsdl\objetos\Estado.xsd</con:url><con:content><![CDATA[<xs:schema targetNamespace="http://servicio.credito.com.co/objetos" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://servicio.credito.com.co/objetos">
+  <xs:complexType name="Estado">
+    <xs:sequence>
+      <xs:element name="id" type="xs:string"/>
+      <xs:element name="nombre" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part><con:part><con:url>file:\F:\Frank\Javeriana\II\Interoperabilidad\interoperabilidad\WServices\src\main\resources\wsdl\objetos\InformacionFinanciera.xsd</con:url><con:content><![CDATA[<xs:schema targetNamespace="http://servicio.credito.com.co/objetos" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://servicio.credito.com.co/objetos">
+  <xs:complexType name="InformacionFinanciera">
+    <xs:sequence>
+      <xs:element name="ingresos" type="xs:double"/>
+      <xs:element name="otrosIngresos" type="xs:double"/>
+      <xs:element name="egresos" type="xs:double"/>
+      <xs:element name="otrosEgresos" type="xs:double"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://localhost:8090/ws/credito/creacion/formulario</con:endpoint></con:endpoints><con:operation id="cf0184e8-4dd0-4812-9507-5633b9bd3752" isOneWay="false" action="" name="creacionFormularioCredito" bindingOperationName="creacionFormularioCredito" type="Request-Response" outputName="creacionFormularioCreditoResponse" inputName="creacionFormularioCreditoRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="b6fc008d-8802-43fd-91d1-a767e5521423" name="Request 1" wssPasswordType="PasswordDigest"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@wss-time-to-live">0</con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8090/ws/credito/creacion/formulario</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:for="http://servicio.credito.com.co/creacion/formulario" xmlns:obj="http://servicio.credito.com.co/objetos">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <for:creacionFormularioCreditoRequest>\r
+         <for:cliente>\r
+            <obj:id>?</obj:id>\r
+            <obj:nombres>?</obj:nombres>\r
+            <obj:apellidos>?</obj:apellidos>\r
+            <obj:identificacion>\r
+               <obj:tipo>?</obj:tipo>\r
+               <obj:numero>?</obj:numero>\r
+               <obj:fechaExpedicion>?</obj:fechaExpedicion>\r
+            </obj:identificacion>\r
+            <obj:telefono>?</obj:telefono>\r
+            <obj:email>?</obj:email>\r
+            <!--1 or more repetitions:-->\r
+            <obj:direcciones>\r
+               <obj:direccion>?</obj:direccion>\r
+               <obj:estado>?</obj:estado>\r
+               <obj:ciudad>\r
+                  <obj:id>?</obj:id>\r
+                  <obj:nombre>?</obj:nombre>\r
+                  <obj:pais>\r
+                     <obj:id>?</obj:id>\r
+                     <obj:nombre>?</obj:nombre>\r
+                     <obj:estado>\r
+                        <obj:id>?</obj:id>\r
+                        <obj:nombre>?</obj:nombre>\r
+                     </obj:estado>\r
+                  </obj:pais>\r
+               </obj:ciudad>\r
+               <obj:tipo>?</obj:tipo>\r
+               <obj:canalActualizacion>?</obj:canalActualizacion>\r
+               <obj:usuarioActualizacion>?</obj:usuarioActualizacion>\r
+               <obj:fechaActualizacion>?</obj:fechaActualizacion>\r
+               <obj:ipActualizacion>?</obj:ipActualizacion>\r
+            </obj:direcciones>\r
+            <obj:informacionFinanciera>\r
+               <obj:ingresos>?</obj:ingresos>\r
+               <obj:otrosIngresos>?</obj:otrosIngresos>\r
+               <obj:egresos>?</obj:egresos>\r
+               <obj:otrosEgresos>?</obj:otrosEgresos>\r
+            </obj:informacionFinanciera>\r
+            <obj:estado>?</obj:estado>\r
+            <obj:canalActualizacion>?</obj:canalActualizacion>\r
+            <obj:usuarioActualizacion>?</obj:usuarioActualizacion>\r
+            <obj:fechaActualizacion>?</obj:fechaActualizacion>\r
+            <obj:ipActualizacion>?</obj:ipActualizacion>\r
+         </for:cliente>\r
+      </for:creacionFormularioCreditoRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:username>admin</con:username><con:password>secret</con:password><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://servicio.credito.com.co/creacion/formulario/ServicePortCrearFormulario/creacionFormularioCreditoRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/></con:soapui-project>
