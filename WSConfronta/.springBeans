@@ -7,7 +7,7 @@
 	</configSuffixes>
 	<enableImports><![CDATA[false]]></enableImports>
 	<configs>
-		<config>java:co.com.confronta.servicio.servicios.WSerivesApplication</config>
+		<config>java:co.com.confronta.servicio.servicios.WSConfrontaApplication</config>
 	</configs>
 	<autoconfigs>
 	</autoconfigs>

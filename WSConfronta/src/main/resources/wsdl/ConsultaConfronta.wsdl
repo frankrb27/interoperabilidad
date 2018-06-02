@@ -1,0 +1,70 @@
+<wsdl:definitions
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:sch="http://servicio.confronta.com.co/consulta"
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+	xmlns:tns="http://servicio.confronta.com.co/consulta"
+	targetNamespace="http://servicio.confronta.com.co/consulta">
+	<wsdl:types>
+		<xs:schema
+			xmlns:cli="http://servicio.confronta.com.co/objetos"
+			xmlns:xs="http://www.w3.org/2001/XMLSchema"
+			elementFormDefault="qualified"
+			targetNamespace="http://servicio.confronta.com.co/consulta">
+			<xs:import
+				namespace="http://servicio.confronta.com.co/objetos"
+				schemaLocation="objetos/Cliente.xsd" />
+			<xs:element name="validarPersonaRequest">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="cliente" type="cli:Cliente" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="validarPersonaResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="codigo" type="xs:string" />
+						<xs:element name="mensaje" type="xs:string" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:schema>
+	</wsdl:types>
+	<wsdl:message name="validarPersonaRequest">
+		<wsdl:part element="tns:validarPersonaRequest"
+			name="validarPersonaRequest"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="validarPersonaResponse">
+		<wsdl:part element="tns:validarPersonaResponse"
+			name="validarPersonaResponse"></wsdl:part>
+	</wsdl:message>
+	<wsdl:portType name="ServicePortConsulta">
+		<wsdl:operation name="validarPersona">
+			<wsdl:input message="tns:validarPersonaRequest"
+				name="validarPersonaRequest"></wsdl:input>
+			<wsdl:output message="tns:validarPersonaResponse"
+				name="validarPersonaResponse"></wsdl:output>
+		</wsdl:operation>
+	</wsdl:portType>
+	<wsdl:binding name="ServicePortConsultaSoap11"
+		type="tns:ServicePortConsulta">
+		<soap:binding style="document"
+			transport="http://schemas.xmlsoap.org/soap/http" />
+		<wsdl:operation name="validarPersona">
+			<soap:operation soapAction="" />
+			<wsdl:input name="validarPersonaRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="validarPersonaResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:service name="ServicePortConsultaService">
+		<wsdl:port binding="tns:ServicePortConsultaSoap11"
+			name="ServicePortConsultaSoap11">
+			<soap:address
+				location="http://localhost:8095/ws/confronta/consulta" />
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>

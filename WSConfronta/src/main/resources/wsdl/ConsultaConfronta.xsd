@@ -1,0 +1,28 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:tns="http://servicio.confronta.com.co/consulta"
+	xmlns:cli="http://servicio.confronta.com.co/objetos"
+	targetNamespace="http://servicio.confronta.com.co/consulta"
+	elementFormDefault="qualified">
+
+	<xs:import
+		namespace="http://servicio.confronta.com.co/objetos"
+		schemaLocation="objetos/Cliente.xsd" />
+
+	<xs:element name="validarPersonaRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="cliente" type="cli:Cliente"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="validarPersonaResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="codigo" type="xs:string" />
+				<xs:element name="mensaje" type="xs:string" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+</xs:schema>

@@ -1,0 +1,14 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:tns="http://servicio.confronta.com.co/objetos"
+	targetNamespace="http://servicio.confronta.com.co/objetos"
+	elementFormDefault="qualified">
+
+	<xs:complexType name="Identificacion">
+		<xs:sequence>
+			<xs:element name="tipo" type="xs:string" />
+			<xs:element name="numero" type="xs:string" />
+			<xs:element name="fechaExpedicion" type="xs:date"/>
+		</xs:sequence>
+	</xs:complexType>
+
+</xs:schema>
